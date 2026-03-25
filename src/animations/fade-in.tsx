@@ -9,9 +9,9 @@ const FadeIn = ({
   threshold = 0.1,
 }: {
   children: React.ReactNode;
-  delay: number;
-  duration: number;
-  threshold: number;
+  delay?: number;
+  duration?: number;
+  threshold?: number;
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
