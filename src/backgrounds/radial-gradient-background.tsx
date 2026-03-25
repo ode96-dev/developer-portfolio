@@ -1,11 +1,9 @@
-import React from "react";
-
 const RadialGradientBackground = ({
   variant,
   gradients,
 }: {
   variant: string;
-  gradients: [];
+  gradients?: [];
 }) => {
   const variants = {
     hero: [
