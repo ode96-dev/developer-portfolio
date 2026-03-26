@@ -12,3 +12,15 @@ export type Skill = {
     category: string;
 };
 
+export type Project = {
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    category: string;
+    technologies: string[];
+    metrics: string;
+    demoUrl: string;
+    githubUrl: string;
+}
+
