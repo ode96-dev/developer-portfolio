@@ -1,3 +1,4 @@
+import { Skill } from "@/types";
 import {
     Zap,
     Code,
@@ -86,7 +87,7 @@ export const skills = [
         id: "d4a6c8e1-6b87-4010-ebf5-af7b9d3c6e10",
         name: "Supabase",
         icon: Database,
-        level: "Intermediate",
+        level: "Expert",
         experience: "1+ year",
         category: "Backend"
     },
@@ -94,7 +95,7 @@ export const skills = [
         id: "e5b7d9f2-7c09-412f-fc16-b08c1e4d7f11",
         name: "REST APIs",
         icon: Globe,
-        level: "Advanced",
+        level: "Expert",
         experience: "2+ years",
         category: "API"
     },
@@ -106,4 +107,4 @@ export const skills = [
         experience: "1+ year",
         category: "Security"
     }
-];
+] satisfies Skill[];;
