@@ -68,3 +68,19 @@ export interface FormStatus {
     type: StatusType;
     message: string;
 }
+
+export
+    type AnimationType =
+    | "fadeUp"
+    | "fadeIn"
+    | "slideLeft"
+    | "slideRight"
+    | "scaleIn";
+
+export interface ScrollRevealProps {
+    children: React.ReactNode;
+    animation?: AnimationType;
+    delay?: number;
+    duration?: number;
+    className?: string;
+}

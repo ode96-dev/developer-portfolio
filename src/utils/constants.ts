@@ -1,4 +1,4 @@
-import { TestimonialStat } from "@/types";
+import { AnimationType, TestimonialStat } from "@/types";
 import { BsGithub, BsLinkedin, BsTwitterX } from "react-icons/bs";
 import { SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
 
@@ -66,3 +66,11 @@ export const socialIcons = {
     linkedin: BsLinkedin,
     twitter: BsTwitterX
 }
+
+export const animationClasses: Record<AnimationType, string> = {
+    fadeUp: "opacity-0 translate-y-8",
+    fadeIn: "opacity-0",
+    slideLeft: "opacity-0 -translate-x-12",
+    slideRight: "opacity-0 translate-x-12",
+    scaleIn: "opacity-0 scale-90",
+};
