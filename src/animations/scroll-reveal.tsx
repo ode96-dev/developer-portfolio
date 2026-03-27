@@ -1,37 +1,33 @@
 "use client";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import React from "react";
 
-const ScrollReveal = ({
+import React, { CSSProperties } from "react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { ScrollRevealProps } from "@/types";
+import { animationClasses } from "@/utils/constants";
+
+const visibleClasses = "opacity-100 translate-y-0 translate-x-0 scale-100";
+
+const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
-  animation = "fadeup",
+  animation = "fadeUp",
   delay = 0,
   duration = 700,
-}: {
-  children: React.ReactNode;
-  animation: string;
-  delay: number;
-  duration: number;
+  className = "",
 }) => {
   const { ref, isVisible } = useScrollReveal({ threshold: 0.1 });
-  const animationClasses = {
-    fadeUp: "opacity-0 translate-y-8",
-    fadeIn: "opacity-0",
-    slideLeft: "opacity-0 translate-x-12",
-    slideRight: "opacity-0 translate-x-12",
-    scaleIn: "opacity-0 scale-90",
-  };
 
-  const visibleClasses = "opacity-100 translate-y-0 translate-x-0 scale-100";
+  const style: CSSProperties = {
+    transitionDuration: `${duration}ms`,
+    transitionDelay: `${delay}ms`,
+  };
 
   return (
     <div
       ref={ref}
-      className={`transition-all ease-out ${isVisible ? visibleClasses : animationClasses[animation]}`}
-      style={{
-        transitionDuration: `${duration}ms`,
-        transitionDelay: `${delay}ms`,
-      }}
+      className={`transition-all ease-out ${className} ${
+        isVisible ? visibleClasses : animationClasses[animation]
+      }`}
+      style={style}
     >
       {children}
     </div>
