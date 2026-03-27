@@ -1,7 +1,7 @@
 "use client";
 import FadeIn from "@/animations/fade-in";
 import { ABOUT_STATS, PERSONAL_INFO } from "@/utils/constants";
-import { Code2, Download } from "lucide-react";
+import { Download } from "lucide-react";
 
 const AboutBioStats = () => {
   return (
@@ -9,7 +9,6 @@ const AboutBioStats = () => {
       <div className="flex flex-col gap-8">
         <FadeIn delay={0}>
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 border border-primary/30 bg-primary/10 rounded-full w-full">
-            <Code2 className="w-4 h-4 text-primary" />
             <span className="text-sm text-primary font-medium">
               Fullstack Developer
             </span>

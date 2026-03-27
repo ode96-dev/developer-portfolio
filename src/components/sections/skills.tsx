@@ -5,7 +5,7 @@ import { skills } from "@/data/skills";
 import { getLevelColor } from "@/lib/helpers/get-level-color";
 import { getProficiencyLevel } from "@/lib/helpers/get-proficiency-level";
 import { Skill } from "@/types";
-import { Code, Terminal } from "lucide-react";
+import { Code } from "lucide-react";
 import SectionHeader from "./shared/section-header";
 
 const Skills = () => {
@@ -29,7 +29,6 @@ const Skills = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          icon={Terminal}
           title={"My Expertise"}
           subtitle={"Skills & Technologies"}
           description={

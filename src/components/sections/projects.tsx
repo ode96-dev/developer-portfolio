@@ -3,7 +3,6 @@
 import FadeIn from "@/animations/fade-in";
 import { categories, projects } from "@/data/project";
 import {
-  Briefcase,
   ChevronLeft,
   ChevronRight,
   Globe,
@@ -77,7 +76,6 @@ const Projects = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          icon={Briefcase}
           title={"My Work"}
           subtitle={"Featured Projects"}
           description={"Showcasing my best work and achievements."}
