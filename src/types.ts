@@ -55,3 +55,16 @@ export interface DotIndicatorsProps {
     currentIndex: number;
     onSelect: (index: number) => void;
 }
+
+export type StatusType = "success" | "error" | "";
+
+export interface FormData {
+    name: string;
+    email: string;
+    message: string;
+}
+
+export interface FormStatus {
+    type: StatusType;
+    message: string;
+}

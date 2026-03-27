@@ -1,4 +1,5 @@
 import { TestimonialStat } from "@/types";
+import { BsGithub, BsLinkedin, BsTwitterX } from "react-icons/bs";
 import { SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 export const PERSONAL_INFO = {
@@ -59,3 +60,9 @@ export const TESTIMONIAL_STATS: TestimonialStat[] = [
     { value: "100%", label: "On-time Delivery" },
     { value: "5★", label: "Average Rating" },
 ];
+
+export const socialIcons = {
+    github: BsGithub,
+    linkedin: BsLinkedin,
+    twitter: BsTwitterX
+}

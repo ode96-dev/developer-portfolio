@@ -6,6 +6,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Globe,
+  LucideIcon,
   Palette,
   Target,
   Zap,
@@ -14,17 +15,26 @@ import React, { useRef, useState } from "react";
 import ProjectCard from "../ui/project-card";
 import SectionHeader from "./shared/section-header";
 
-const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollContainerRef = useRef(null);
+type Category = "All" | "Web Apps" | "UI Components" | "Fullstack";
+
+const categoryIcons: Record<Category, LucideIcon> = {
+  All: Target,
+  "Web Apps": Globe,
+  "UI Components": Palette,
+  Fullstack: Zap,
+};
+
+const Projects = (): React.JSX.Element => {
+  const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects =
     activeCategory === "All"
       ? projects
       : projects.filter((project) => project.category === activeCategory);
 
-  const handleCategoryChange = (category) => {
+  const handleCategoryChange = (category: Category): void => {
     setActiveCategory(category);
     setCurrentIndex(0);
 
@@ -33,7 +43,7 @@ const Projects = () => {
     }
   };
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndex = (index: number): void => {
     setCurrentIndex(index);
 
     if (scrollContainerRef.current) {
@@ -46,24 +56,15 @@ const Projects = () => {
     }
   };
 
-  const nextSlide = () => {
+  const nextSlide = (): void => {
     const maxIndex = Math.max(0, filteredProjects.length - 3);
     const newIndex = Math.min(currentIndex + 1, maxIndex);
-
     scrollToIndex(newIndex);
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     const newIndex = Math.max(currentIndex - 1, 0);
-
     scrollToIndex(newIndex);
-  };
-
-  const categoryIcons = {
-    All: Target,
-    "Web Apps": Globe,
-    "UI Components": Palette,
-    Fullstack: Zap,
   };
 
   return (
@@ -83,26 +84,35 @@ const Projects = () => {
 
         <FadeIn delay={100}>
           <div className="flex flex-wrap justify-center gap-3 mb-16">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleCategoryChange(category)}
-                className={`cursor-pointer group relative px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? "text-white" : "text-white/60 hover:text-white"}`}
-              >
-                <div
-                  className={`absolute inset-0 rounded-full transition-all duration-300 ${activeCategory === category ? "bg-primary/10 opacity-100" : "bg-white/5 border border-white/10 group-hover:bg-white/10"}`}
-                />
-                <div className="relative flex items-center gap-2">
-                  {React.createElement(categoryIcons[category], {
-                    className: "w-4 h-4",
-                  })}
-                  <span className="text-sm">{category}</span>
-                </div>
-                {activeCategory === category && (
-                  <div className="absolute inset-0 rounded-full bg-primary blur-xl opacity-50" />
-                )}
-              </button>
-            ))}
+            {(categories as Category[]).map((category) => {
+              const Icon: LucideIcon = categoryIcons[category];
+              return (
+                <button
+                  key={category}
+                  onClick={() => handleCategoryChange(category)}
+                  className={`cursor-pointer group relative px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                    activeCategory === category
+                      ? "text-white"
+                      : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  <div
+                    className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                      activeCategory === category
+                        ? "bg-primary/10 opacity-100"
+                        : "bg-white/5 border border-white/10 group-hover:bg-white/10"
+                    }`}
+                  />
+                  <div className="relative flex items-center gap-2">
+                    <Icon className="w-4 h-4" />
+                    <span className="text-sm">{category}</span>
+                  </div>
+                  {activeCategory === category && (
+                    <div className="absolute inset-0 rounded-full bg-primary blur-xl opacity-50" />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </FadeIn>
 
@@ -115,7 +125,7 @@ const Projects = () => {
               <div className="flex gap-6 pb-4">
                 {filteredProjects.map((project, index) => (
                   <div
-                    key={`${index} - ${project.id}`}
+                    key={`${index}-${project.id}`}
                     className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start"
                   >
                     <ProjectCard project={project} />
@@ -123,6 +133,7 @@ const Projects = () => {
                 ))}
               </div>
             </div>
+
             {filteredProjects.length > 3 && (
               <>
                 <button
@@ -137,13 +148,14 @@ const Projects = () => {
                 <button
                   onClick={nextSlide}
                   disabled={currentIndex > filteredProjects.length - 3}
-                  className="flex absolute right-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+                  className="flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
                   aria-label="Next Projects"
                 >
                   <ChevronRight className="w-6 h-6 text-white" />
                 </button>
               </>
             )}
+
             {filteredProjects.length > 3 && (
               <div className="flex items-center justify-center gap-2 mt-8">
                 {Array.from({
@@ -151,7 +163,12 @@ const Projects = () => {
                 }).map((_, index) => (
                   <button
                     key={index}
-                    className={`transition-all duration-300 rounded-full ${index === currentIndex ? "bg-primary w-6 h-6" : "bg-white/30 w-2 h-2 hover:bg-white/50"}`}
+                    onClick={() => scrollToIndex(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      index === currentIndex
+                        ? "bg-primary w-6 h-6"
+                        : "bg-white/30 w-2 h-2 hover:bg-white/50"
+                    }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
