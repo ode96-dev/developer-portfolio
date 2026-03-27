@@ -1,3 +1,4 @@
+import { TestimonialStat } from "@/types";
 import { SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 export const PERSONAL_INFO = {
@@ -51,3 +52,10 @@ export const SKILLS = [
     { name: 'React.js', icon: SiNodedotjs, color: "#339933" },
     { name: 'React.js', icon: SiMongodb, color: "#47A248" },
 ]
+
+export const TESTIMONIAL_STATS: TestimonialStat[] = [
+    { value: "3x", label: "Faster Delivery" },
+    { value: "95%", label: "Client Satisfaction" },
+    { value: "100%", label: "On-time Delivery" },
+    { value: "5★", label: "Average Rating" },
+];

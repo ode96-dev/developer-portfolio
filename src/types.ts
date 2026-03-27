@@ -24,3 +24,34 @@ export type Project = {
     githubUrl: string;
 }
 
+export interface TestimonialStat {
+    value: string;
+    label: string;
+}
+
+export interface NavButtonProps {
+    direction: "prev" | "next";
+    onClick: () => void;
+}
+
+export interface StatBadgeProps {
+    stat: TestimonialStat;
+}
+
+export type Variant = "hero" | "about";
+
+export type Testimonial = {
+    id: string;
+    name: string;
+    role: string;
+    company: string;
+    image: string;
+    quote: string;
+    rating: number;
+}
+
+export interface DotIndicatorsProps {
+    count: number;
+    currentIndex: number;
+    onSelect: (index: number) => void;
+}

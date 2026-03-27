@@ -1,10 +1,6 @@
-const RadialGradientBackground = ({
-  variant,
-  gradients,
-}: {
-  variant: string;
-  gradients?: [];
-}) => {
+import { Variant } from "@/types";
+
+const RadialGradientBackground = ({ variant }: { variant: Variant }) => {
   const variants = {
     hero: [
       {
@@ -64,8 +60,7 @@ const RadialGradientBackground = ({
     ],
   };
 
-  const activeGradients =
-    variant === "custom" ? gradients : variants[variant] || variants.hero;
+  const activeGradients = variants[variant] || variants.hero;
 
   const generateGradient = (
     colors: {
