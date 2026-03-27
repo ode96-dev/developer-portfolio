@@ -9,7 +9,7 @@ import Testimonials from "@/components/sections/testimonials";
 
 export default function Home() {
   return (
-    <div className="min-h-screen pb-[100vh]">
+    <div className="min-h-screen">
       <main>
         <Hero />
         <About />
