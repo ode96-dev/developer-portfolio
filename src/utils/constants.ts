@@ -1,3 +1,7 @@
+import { TestimonialStat } from "@/types";
+import { BsGithub, BsLinkedin, BsTwitterX } from "react-icons/bs";
+import { SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
+
 export const PERSONAL_INFO = {
     name: "Ode Dev",
     title: "Full Stack Developer & Cybersecurity Enthusiast",
@@ -40,3 +44,25 @@ export const NAV_LINKS = [
     { id: 'services', label: 'Services' },
     { id: 'contact', label: 'Contact' },
 ]
+
+export const SKILLS = [
+    { name: 'React.js', icon: SiReact, color: "#61DAF8" },
+    { name: 'React.js', icon: SiNextdotjs, color: "#000000" },
+    { name: 'React.js', icon: SiTypescript, color: "#3178C6" },
+    { name: 'React.js', icon: SiTailwindcss, color: "#06B6D4" },
+    { name: 'React.js', icon: SiNodedotjs, color: "#339933" },
+    { name: 'React.js', icon: SiMongodb, color: "#47A248" },
+]
+
+export const TESTIMONIAL_STATS: TestimonialStat[] = [
+    { value: "3x", label: "Faster Delivery" },
+    { value: "95%", label: "Client Satisfaction" },
+    { value: "100%", label: "On-time Delivery" },
+    { value: "5★", label: "Average Rating" },
+];
+
+export const socialIcons = {
+    github: BsGithub,
+    linkedin: BsLinkedin,
+    twitter: BsTwitterX
+}
